@@ -12,4 +12,4 @@ class Exercise(models.Model):
 
 class Sleep(models.Model):
     hours = models.FloatField()
-    quality = models.IntegerField()
+    quality = models.BooleanField()
