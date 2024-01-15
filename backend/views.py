@@ -1,26 +1,30 @@
 from django.shortcuts import render
-from rest_framework.response import Response
-from rest_framework.decorators import api_view
-from rest_framework import status
-from .serializers import CaffeineSerializer
-from .models import Caffeine
+from rest_framework import permissions, viewsets
+from .serializers import CaffeineSerializer, ExerciseSerializer, SleepSerializer
+from .models import Caffeine, Exercise, Sleep
 
 # Create your views here.
 
-@api_view(['PUT', 'DELETE'])
-def CaffeineView(request, pk):
-    try:
-        Caffeine = Caffeine.objects.get(pk=pk)
-    except Caffeine.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+class CaffeineViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Caffeine.objects.all()
+    serializer_class = CaffeineSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
-    if request.method == 'PUT':
-        serializer = CaffeineSerializer(Caffeine, data=request.data,context={'request': request})
-        if serializer.is_valid():
-            serializer.save()
-            return Response(status=status.HTTP_204_NO_CONTENT)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
-    elif request.method == 'DELETE':
-        Caffeine.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+class ExerciseViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Exercise.objects.all()
+    serializer_class = ExerciseSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class SleepViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Sleep.objects.all()
+    serializer_class = SleepSerializer
+    permission_classes = [permissions.IsAuthenticated]
