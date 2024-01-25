@@ -1,7 +1,9 @@
-from django.shortcuts import render
-from rest_framework import permissions, viewsets
-from .serializers import CaffeineSerializer, ExerciseSerializer, SleepSerializer
-from .models import Caffeine, Exercise, Sleep
+from rest_framework import permissions, status, viewsets
+from rest_framework.decorators import action
+from rest_framework.response import Response
+from rest_framework.parsers import JSONParser
+from .serializers import CaffeineSerializer, WaterSerializer, ExerciseSerializer, SleepSerializer
+from .models import Caffeine, Water, Exercise, Sleep
 
 # Create your views here.
 
@@ -11,7 +13,13 @@ class CaffeineViewSet(viewsets.ModelViewSet):
     """
     queryset = Caffeine.objects.all()
     serializer_class = CaffeineSerializer
-    permission_classes = [permissions.IsAuthenticated]
+
+class WaterViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Water.objects.all()
+    serializer_class = WaterSerializer
 
 class ExerciseViewSet(viewsets.ModelViewSet):
     """
@@ -19,7 +27,6 @@ class ExerciseViewSet(viewsets.ModelViewSet):
     """
     queryset = Exercise.objects.all()
     serializer_class = ExerciseSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
 class SleepViewSet(viewsets.ModelViewSet):
     """
@@ -27,4 +34,3 @@ class SleepViewSet(viewsets.ModelViewSet):
     """
     queryset = Sleep.objects.all()
     serializer_class = SleepSerializer
-    permission_classes = [permissions.IsAuthenticated]

@@ -17,10 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from backend import views
-from rest_framework import routers
+from rest_framework import routers, renderers
 
 router = routers.DefaultRouter()
 router.register(r'caffeine', views.CaffeineViewSet)
+router.register(r'water', views.WaterViewSet)
 router.register(r'exercise', views.ExerciseViewSet)
 router.register(r'sleep', views.SleepViewSet)
 
