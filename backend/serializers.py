@@ -17,8 +17,7 @@ class ExerciseSerializer(serializers.ModelSerializer):
         fields = ('__all__')
 
 class SleepSerializer(serializers.ModelSerializer):
-    awake = serializers.DateTimeField(format="%d-%m-%Y %H:%M:%S")
-    
+
     class Meta:
         model = Sleep
         fields = ('__all__')
