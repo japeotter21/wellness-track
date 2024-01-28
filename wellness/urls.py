@@ -22,6 +22,7 @@ from rest_framework import routers, renderers
 router = routers.DefaultRouter()
 router.register(r'caffeine', views.CaffeineViewSet)
 router.register(r'water', views.WaterViewSet)
+router.register(r'alcohol', views.AlcoholViewSet)
 router.register(r'exercise', views.ExerciseViewSet)
 router.register(r'sleep', views.SleepViewSet)
 
