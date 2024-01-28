@@ -12,6 +12,7 @@ class Water(models.Model):
 
 class Alcohol(models.Model):
     drinks = models.IntegerField(default=0)
+    drankAt = models.DateTimeField(default="2024-01-27T05:02:06.387082Z")
     time = models.DateTimeField(auto_now_add=True)
 
 class Exercise(models.Model):
