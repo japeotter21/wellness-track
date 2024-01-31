@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Caffeine, Water, Exercise, Sleep, Alcohol
+from .models import Caffeine, Water, Exercise, Sleep, Alcohol, Mood, Focus, ScreenTime
 
 class CaffeineSerializer(serializers.ModelSerializer):
     class Meta:
@@ -22,7 +22,21 @@ class ExerciseSerializer(serializers.ModelSerializer):
         fields = ('__all__')
 
 class SleepSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Sleep
+        fields = ('__all__')
+        
+class MoodSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Mood
+        fields = ('__all__')
+
+class FocusSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Focus
+        fields = ('__all__')
+
+class ScreenTimeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ScreenTime
         fields = ('__all__')

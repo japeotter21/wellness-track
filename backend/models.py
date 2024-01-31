@@ -25,3 +25,15 @@ class Sleep(models.Model):
     quality = models.IntegerField(default=1)
     awake = models.TextField(default="08:00")
     time = models.DateTimeField(auto_now_add=True)
+
+class Mood(models.Model):
+    mood = models.TextField(choices=[("S", "Sleepy"),("T","Tired"),("W","Awake"),("A","Alert")])
+    time = models.DateTimeField(auto_now_add=True)
+    
+class Focus(models.Model):
+    focus = models.IntegerField(default=1)
+    time = models.DateTimeField(auto_now_add=True)
+
+class ScreenTime(models.Model):
+    hours = models.FloatField()
+    time = models.DateTimeField(auto_now_add=True)

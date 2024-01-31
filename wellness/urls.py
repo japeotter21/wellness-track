@@ -25,6 +25,9 @@ router.register(r'water', views.WaterViewSet)
 router.register(r'alcohol', views.AlcoholViewSet)
 router.register(r'exercise', views.ExerciseViewSet)
 router.register(r'sleep', views.SleepViewSet)
+router.register(r'mood', views.MoodViewSet)
+router.register(r'focus', views.FocusViewSet)
+router.register(r'screentime', views.ScreenTimeViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
